@@ -8,19 +8,25 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+# ── Imagens via URL (sem necessidade de upload) ──────────────────────────────
+IMG_HERO     = "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=80"
+IMG_ELETRICA = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80"
+IMG_HIDRAUL  = "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80"
+IMG_DICAS    = "https://images.unsplash.com/photo-1605152276897-4f618f831968?w=800&q=80"
+IMG_GALERIA1 = "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80"
+IMG_GALERIA2 = "https://images.unsplash.com/photo-1565689562630-4f1c4c26be44?w=800&q=80"
+
 # ── CSS Global ──────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap');
 
-/* Reset e base */
 * { box-sizing: border-box; }
 .main { background-color: #0a0a0a !important; color: #f5f5f2; }
 section[data-testid="stSidebar"] { display: none; }
 #MainMenu, footer, header { visibility: hidden; }
 .block-container { padding: 0 !important; max-width: 100% !important; }
 
-/* Tipografia */
 h1, h2, h3 {
     font-family: 'Bebas Neue', 'Arial Black', sans-serif !important;
     color: #C9A84C !important;
@@ -28,7 +34,6 @@ h1, h2, h3 {
     text-transform: uppercase !important;
 }
 
-/* Botões */
 .stButton > button {
     background: linear-gradient(135deg, #C9A84C, #E8C96A) !important;
     color: #000 !important;
@@ -44,7 +49,6 @@ h1, h2, h3 {
     cursor: pointer !important;
 }
 
-/* Link button WhatsApp */
 .stLinkButton > a {
     background: linear-gradient(135deg, #25D366, #128C7E) !important;
     color: #fff !important;
@@ -59,16 +63,13 @@ h1, h2, h3 {
     text-align: center !important;
 }
 
-/* Divisores */
 hr { border-top: 1px solid rgba(201,168,76,0.3) !important; }
-
-/* Imagens */
 img { border-radius: 4px !important; }
 </style>
 """, unsafe_allow_html=True)
 
 # ── Número WhatsApp ──────────────────────────────────────────────────────────
-WHATSAPP = "https://wa.me/5561992473134?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento."
+WHATSAPP = "https://wa.me/5561992473134?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento."
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║  HEADER                                                                  ║
@@ -113,7 +114,7 @@ with col_hero_txt:
       </h1>
       <p style="font-size:16px;color:#999;font-family:'Barlow',sans-serif;
                 max-width:480px;line-height:1.8;margin-bottom:32px;">
-        Referência em engenharia elétrica e hidráulica no DF. 
+        Referência em engenharia elétrica e hidráulica no DF.
         Segurança, qualidade e atendimento técnico com mais de 20 anos de experiência.
       </p>
       <div style="display:flex;gap:32px;padding-top:24px;border-top:1px solid #222;flex-wrap:wrap;">
@@ -135,10 +136,7 @@ with col_hero_txt:
 
 with col_hero_img:
     st.markdown("<div style='padding:24px 32px 0 0;'>", unsafe_allow_html=True)
-    try:
-        st.image("destaque.jpg", use_column_width=True)
-    except:
-        st.image("destaque_jpg.jpeg", use_column_width=True)
+    st.image(IMG_HERO, use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ── Botão WhatsApp principal ─────────────────────────────────────────────────
@@ -198,9 +196,7 @@ with col_e:
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;
                     padding-bottom:14px;border-bottom:1px solid #2a2a2a;">
           <div style="width:42px;height:42px;background:rgba(201,168,76,0.1);border:1px solid #C9A84C;
-                      border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">
-            ⚡
-          </div>
+                      border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">⚡</div>
           <div>
             <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;
                         font-family:'Barlow',sans-serif;">Área de atuação</div>
@@ -210,37 +206,19 @@ with col_e:
           </div>
         </div>
     """, unsafe_allow_html=True)
-    try:
-        st.image("eletrica.jpg", use_column_width=True)
-    except:
-        st.image("eletrica_jpg.jpeg", use_column_width=True)
+    st.image(IMG_ELETRICA, use_column_width=True)
     st.markdown("""
         <ul style="list-style:none;padding:0;margin-top:16px;">
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Instalação de Quadros de Distribuição
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Manutenção de Sistemas de Bombas
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Infraestrutura Completa para Condomínios
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Iluminação e Automação
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Centros de Medição Coletiva
-          </li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Instalação de Quadros de Distribuição</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Manutenção de Sistemas de Bombas</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Infraestrutura Completa para Condomínios</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Iluminação e Automação</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Centros de Medição Coletiva</li>
         </ul>
       </div>
     </div>
@@ -253,9 +231,7 @@ with col_h:
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;
                     padding-bottom:14px;border-bottom:1px solid #2a2a2a;">
           <div style="width:42px;height:42px;background:rgba(201,168,76,0.1);border:1px solid #C9A84C;
-                      border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">
-            💧
-          </div>
+                      border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">💧</div>
           <div>
             <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;
                         font-family:'Barlow',sans-serif;">Área de atuação</div>
@@ -265,37 +241,19 @@ with col_h:
           </div>
         </div>
     """, unsafe_allow_html=True)
-    try:
-        st.image("hidraulica.jpg", use_column_width=True)
-    except:
-        st.image("hidraulica_jpg.jpeg", use_column_width=True)
+    st.image(IMG_HIDRAUL, use_column_width=True)
     st.markdown("""
         <ul style="list-style:none;padding:0;margin-top:16px;">
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Reparo de Vazamentos Estruturais
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Manutenção Preventiva de Bombas
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Limpeza e Vedação de Reservatórios
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Redes de Incêndio e Recalque
-          </li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;
-                     display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>
-            Sistemas de Bombas e Alinhamento
-          </li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Reparo de Vazamentos Estruturais</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Manutenção Preventiva de Bombas</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Limpeza e Vedação de Reservatórios</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Redes de Incêndio e Recalque</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Sistemas de Bombas e Alinhamento</li>
         </ul>
       </div>
     </div>
@@ -316,15 +274,9 @@ st.markdown("""
 
 g1, g2 = st.columns(2, gap="medium")
 with g1:
-    try:
-        st.image("hidraulica.jpg", caption="Grandes Projetos: Infraestrutura Completa", use_column_width=True)
-    except:
-        st.image("hidraulica_jpg.jpeg", caption="Grandes Projetos: Infraestrutura Completa", use_column_width=True)
+    st.image(IMG_GALERIA1, caption="Grandes Projetos: Infraestrutura Completa", use_column_width=True)
 with g2:
-    try:
-        st.image("eletrica.jpg", caption="Padrão Elitee de Organização", use_column_width=True)
-    except:
-        st.image("eletrica_jpg.jpeg", caption="Padrão Elitee de Organização", use_column_width=True)
+    st.image(IMG_GALERIA2, caption="Padrão Elitee de Organização", use_column_width=True)
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║  NORMA NBR                                                               ║
@@ -357,11 +309,11 @@ with col_dica:
       </div>
       <h2 style="font-size:36px !important;margin-bottom:16px !important;">💡 Dicas da Elitee</h2>
       <p style="font-size:15px;color:#aaa;line-height:1.8;font-family:'Barlow',sans-serif;">
-        Prevenção é economia! Muitas vezes, uma simples revisão no quadro elétrico evita 
+        Prevenção é economia! Muitas vezes, uma simples revisão no quadro elétrico evita
         incêndios e pode reduzir sua conta de luz em até 20%.
       </p>
       <p style="font-size:15px;color:#aaa;line-height:1.8;font-family:'Barlow',sans-serif;margin-top:12px;">
-        Não arrisque seu patrimônio com serviços improvisados. 
+        Não arrisque seu patrimônio com serviços improvisados.
         Contrate quem conhece o padrão do DF.
       </p>
       <div style="background:rgba(201,168,76,0.08);border-left:2px solid #C9A84C;
@@ -374,10 +326,7 @@ with col_dica:
 
 with col_dica_img:
     st.markdown("<div style='padding:40px 32px 40px 16px;'>", unsafe_allow_html=True)
-    try:
-        st.image("dicas.jpg", use_column_width=True)
-    except:
-        st.image("dicas_jpg.jpeg", use_column_width=True)
+    st.image(IMG_DICAS, use_column_width=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
@@ -415,17 +364,6 @@ with col_z2:
       </div>
     </div>
     """, unsafe_allow_html=True)
-
-# ── Imagem de contato ────────────────────────────────────────────────────────
-col_ci1, col_ci2, col_ci3 = st.columns([1, 2, 1])
-with col_ci2:
-    try:
-        st.image("informacoescontato.jpg", use_column_width=True)
-    except:
-        try:
-            st.image("informacoes_jpg.jpeg", use_column_width=True)
-        except:
-            pass
 
 # ╔══════════════════════════════════════════════════════════════════════════╗
 # ║  RODAPÉ                                                                  ║
