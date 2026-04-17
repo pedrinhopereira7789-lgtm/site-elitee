@@ -1,12 +1,10 @@
 import streamlit as st
-# TAG DE VERIFICAÇÃO GOOGLE
+# ── Configuração da página ──────────────────────────────────────────────────
+st.set_page_config(
+    # TAG DE VERIFICAÇÃO GOOGLE
 st.markdown("""
     <meta name="google-site-verification" content="gCNlCNMPOTcoPzQvAPbx-5Thz1u6oBsQqNbOMGhVLsU" />
 """, unsafe_allow_html=True)
-from img_data import IMG_DESTAQUE, IMG_ELETRICA, IMG_HIDRAULICA, IMG_DICAS, IMG_INFORMACOES, IMG_LOGO
-
-# ── Configuração da página ──────────────────────────────────────────────────
-st.set_page_config(
     page_title="Instalações Elitee | Elétrica & Hidráulica",
     page_icon="⚡",
     layout="wide",
