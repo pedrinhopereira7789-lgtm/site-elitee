@@ -64,7 +64,7 @@ st.markdown("<p style='text-align: center; font-size: 22px; color: #aaa;'>Refer�
 
 # Imagem de Destaque (Banner Principal)
 try:
-    st.image("destaque.jpg", use_column_width=True)
+    st.image("destaque.jpg", use_container_width=True)
 except:
     st.divider()
 
@@ -87,7 +87,7 @@ col_elet, col_hidra = st.columns(2)
 with col_elet:
     st.subheader("⚡ Elétrica Predial e Residencial")
     try:
-        st.image("eletrica.jpg", caption="Quadros de Energia e Centros de Medição", use_column_width=True)
+        st.image("eletrica.jpg", caption="Quadros de Energia e Centros de Medição", use_container_width=True)
     except:
         st.info("Imagem de Elétrica")
     st.write("""
@@ -100,7 +100,7 @@ with col_elet:
 with col_hidra:
     st.subheader("💧 Hidráulica e Sistemas")
     try:
-        st.image("hidraulica.jpg", caption="Redes de Incêndio e Sistemas de Recalque", use_column_width=True)
+        st.image("hidraulica.jpg", caption="Redes de Incêndio e Sistemas de Recalque", use_container_width=True)
     except:
         st.info("Imagem de Hidráulica")
     st.write("""
@@ -123,7 +123,7 @@ with col_d:
     """)
 with col_img_d:
     try:
-        st.image("dicas.jpg", use_column_width=True)
+        st.image("dicas.jpg", use_container_width=True)
     except:
         pass
 
