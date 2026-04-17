@@ -1,8 +1,15 @@
 import streamlit as st
+import base64
+
 # ── Configuração da página ──────────────────────────────────────────────────
 st.set_page_config(
-    import base64
+    page_title="Instalações Elitee | Elétrica & Hidráulica",
+    page_icon="⚡",
+    layout="wide",
+    initial_sidebar_state="collapsed"
+)
 
+# ── Carregamento de Imagens ─────────────────────────────────────────────────
 def load_img(path):
     try:
         with open(path, "rb") as f:
@@ -16,11 +23,6 @@ IMG_ELETRICA    = load_img("eletrica.jpg")
 IMG_HIDRAULICA  = load_img("hidraulica.jpg")
 IMG_DICAS       = load_img("dicas.jpg")
 IMG_INFORMACOES = load_img("informacoescontato.jpg")
-    page_title="Instalações Elitee | Elétrica & Hidráulica",
-    page_icon="⚡",
-    layout="wide",
-    initial_sidebar_state="collapsed"
-)
 
 def img_tag(b64, alt="", style="width:100%;border-radius:4px;"):
     return f'<img src="data:image/jpeg;base64,{b64}" alt="{alt}" style="{style}"/>'
@@ -29,20 +31,17 @@ def img_tag(b64, alt="", style="width:100%;border-radius:4px;"):
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;600;700&display=swap');
-
 * { box-sizing: border-box; }
 .main { background-color: #0a0a0a !important; color: #f5f5f2; }
 section[data-testid="stSidebar"] { display: none; }
 #MainMenu, footer, header { visibility: hidden; }
 .block-container { padding: 0 !important; max-width: 100% !important; }
-
 h1, h2, h3 {
     font-family: 'Bebas Neue', 'Arial Black', sans-serif !important;
     color: #C9A84C !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
 }
-
 .stLinkButton > a {
     background: linear-gradient(135deg, #25D366, #128C7E) !important;
     color: #fff !important;
@@ -56,7 +55,6 @@ h1, h2, h3 {
     display: block !important;
     text-align: center !important;
 }
-
 hr { border-top: 1px solid rgba(201,168,76,0.3) !important; }
 img { border-radius: 4px !important; }
 </style>
@@ -64,9 +62,7 @@ img { border-radius: 4px !important; }
 
 WHATSAPP = "https://wa.me/5561992473134?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20meu%20or%C3%A7amento."
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  HEADER                                                                  ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── HEADER ──────────────────────────────────────────────────────────────────
 st.markdown(f"""
 <div style="background:#0f0f0f;border-bottom:2px solid #C9A84C;padding:16px 32px;
             display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
@@ -92,9 +88,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  HERO                                                                    ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── HERO ────────────────────────────────────────────────────────────────────
 col_hero_txt, col_hero_img = st.columns([1, 1], gap="medium")
 
 with col_hero_txt:
@@ -132,17 +126,14 @@ with col_hero_txt:
     """, unsafe_allow_html=True)
 
 with col_hero_img:
-    st.markdown(f"<div style='padding:24px 32px 0 0;'>{img_tag(IMG_DESTAQUE, 'Centro de Medição Coletiva')}</div>",
+    st.markdown(f"<div style='padding:24px 32px 0 0;'>{img_tag(IMG_DESTAQUE, 'Centro de Medição')}</div>",
                 unsafe_allow_html=True)
 
-# ── Botão WhatsApp principal ─────────────────────────────────────────────────
 st.markdown("<div style='padding:0 32px 40px;'>", unsafe_allow_html=True)
 st.link_button("📲  FAÇA SEU ORÇAMENTO GRATUITO NO WHATSAPP", WHATSAPP)
 st.markdown("</div>", unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  DIFERENCIAIS                                                            ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── DIFERENCIAIS ────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="background:#0f0f0f;padding:48px 32px 0;">
   <div style="font-size:11px;color:#C9A84C;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;">
@@ -170,9 +161,7 @@ for col, (icon, title, text) in zip([c1, c2, c3], cards):
         </div>
         """, unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  ESPECIALIDADES                                                          ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── ESPECIALIDADES ───────────────────────────────────────────────────────────
 st.markdown("<hr style='margin:0;'/>", unsafe_allow_html=True)
 st.markdown("""
 <div style="padding:48px 32px 24px;">
@@ -194,22 +183,22 @@ with col_e:
           <div style="width:42px;height:42px;background:rgba(201,168,76,0.1);border:1px solid #C9A84C;
                       border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">⚡</div>
           <div>
-            <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-family:'Barlow',sans-serif;">Área de atuação</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#f5f5f2;letter-spacing:1px;">Elétrica Predial e Residencial</div>
+            <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;">Área de atuação</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#f5f5f2;">Elétrica Predial e Residencial</div>
           </div>
         </div>
         {img_tag(IMG_ELETRICA, 'Elétrica')}
         <ul style="list-style:none;padding:0;margin-top:16px;">
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Instalação de Quadros de Distribuição</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Manutenção de Sistemas de Bombas</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Infraestrutura Completa para Condomínios</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Iluminação e Automação</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Centros de Medição Coletiva</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Instalação de Quadros de Distribuição</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Manutenção de Sistemas de Bombas</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Infraestrutura Completa para Condomínios</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Iluminação e Automação</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Centros de Medição Coletiva</li>
         </ul>
       </div>
     </div>
@@ -224,30 +213,28 @@ with col_h:
           <div style="width:42px;height:42px;background:rgba(201,168,76,0.1);border:1px solid #C9A84C;
                       border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:18px;">💧</div>
           <div>
-            <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;font-family:'Barlow',sans-serif;">Área de atuação</div>
-            <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#f5f5f2;letter-spacing:1px;">Hidráulica e Sistemas</div>
+            <div style="font-size:11px;color:#C9A84C;letter-spacing:2px;text-transform:uppercase;">Área de atuação</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#f5f5f2;">Hidráulica e Sistemas</div>
           </div>
         </div>
         {img_tag(IMG_HIDRAULICA, 'Hidráulica')}
         <ul style="list-style:none;padding:0;margin-top:16px;">
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Reparo de Vazamentos Estruturais</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Manutenção Preventiva de Bombas</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Limpeza e Vedação de Reservatórios</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Redes de Incêndio e Recalque</li>
-          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;font-family:'Barlow',sans-serif;">
-            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;flex-shrink:0;"></span>Sistemas de Bombas e Alinhamento</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Reparo de Vazamentos Estruturais</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Manutenção Preventiva de Bombas</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Limpeza e Vedação de Reservatórios</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;border-bottom:1px solid #1e1e1e;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Redes de Incêndio e Recalque</li>
+          <li style="font-size:14px;color:#bbb;padding:7px 0;display:flex;align-items:center;gap:8px;">
+            <span style="width:4px;height:4px;background:#C9A84C;border-radius:50%;display:inline-block;"></span>Sistemas de Bombas e Alinhamento</li>
         </ul>
       </div>
     </div>
     """, unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  GALERIA                                                                 ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── GALERIA ──────────────────────────────────────────────────────────────────
 st.markdown("<hr style='margin:32px 0;'/>", unsafe_allow_html=True)
 st.markdown("""
 <div style="padding:0 32px 24px;">
@@ -262,40 +249,32 @@ g1, g2 = st.columns(2, gap="medium")
 with g1:
     st.markdown(f"""
     <div style="padding:0 16px 0 32px;">
-      {img_tag(IMG_DESTAQUE, 'Grandes Projetos: Infraestrutura Completa')}
-      <div style="text-align:center;font-size:13px;color:#666;padding:8px 0;font-family:'Barlow',sans-serif;">
-        Grandes Projetos: Infraestrutura Completa
-      </div>
+      {img_tag(IMG_DESTAQUE, 'Grandes Projetos')}
+      <div style="text-align:center;font-size:13px;color:#666;padding:8px 0;">Grandes Projetos: Infraestrutura Completa</div>
     </div>""", unsafe_allow_html=True)
 with g2:
     st.markdown(f"""
     <div style="padding:0 32px 0 16px;">
-      {img_tag(IMG_ELETRICA, 'Padrão Elitee de Organização')}
-      <div style="text-align:center;font-size:13px;color:#666;padding:8px 0;font-family:'Barlow',sans-serif;">
-        Padrão Elitee de Organização
-      </div>
+      {img_tag(IMG_ELETRICA, 'Padrão Elitee')}
+      <div style="text-align:center;font-size:13px;color:#666;padding:8px 0;">Padrão Elitee de Organização</div>
     </div>""", unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  NORMA NBR                                                               ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── NBR ──────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="margin:32px 32px 24px;background:#111;border:1px solid #2a2000;
             border-left:3px solid #C9A84C;padding:20px 24px;display:flex;
             align-items:center;gap:16px;flex-wrap:wrap;">
   <div style="background:rgba(201,168,76,0.15);color:#C9A84C;
-              font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;
-              padding:6px 14px;border:1px solid #C9A84C;flex-shrink:0;">NBR-5410</div>
-  <div style="font-size:14px;color:#aaa;line-height:1.7;font-family:'Barlow',sans-serif;">
+              font-family:'Bebas Neue',sans-serif;font-size:20px;
+              padding:6px 14px;border:1px solid #C9A84C;">NBR-5410</div>
+  <div style="font-size:14px;color:#aaa;line-height:1.7;">
     <strong style="color:#f5f5f2;">Todas as instalações seguem rigorosamente as normas técnicas brasileiras.</strong>
     Garantia de conformidade, segurança e durabilidade para sua residência ou empreendimento.
   </div>
 </div>
 """, unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  DICAS                                                                   ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── DICAS ────────────────────────────────────────────────────────────────────
 st.markdown("<hr style='margin:8px 0;'/>", unsafe_allow_html=True)
 col_dica, col_dica_img = st.columns([1, 1], gap="medium")
 
@@ -306,17 +285,16 @@ with col_dica:
         Fique por dentro
       </div>
       <h2 style="font-size:36px !important;margin-bottom:16px !important;">💡 Dicas da Elitee</h2>
-      <p style="font-size:15px;color:#aaa;line-height:1.8;font-family:'Barlow',sans-serif;">
-        Prevenção é economia! Muitas vezes, uma simples revisão no quadro elétrico evita
+      <p style="font-size:15px;color:#aaa;line-height:1.8;">
+        Prevenção é economia! Uma simples revisão no quadro elétrico evita
         incêndios e pode reduzir sua conta de luz em até 20%.
       </p>
-      <p style="font-size:15px;color:#aaa;line-height:1.8;font-family:'Barlow',sans-serif;margin-top:12px;">
+      <p style="font-size:15px;color:#aaa;line-height:1.8;margin-top:12px;">
         Não arrisque seu patrimônio com serviços improvisados.
         Contrate quem conhece o padrão do DF.
       </p>
       <div style="background:rgba(201,168,76,0.08);border-left:2px solid #C9A84C;
-                  padding:12px 18px;margin-top:24px;font-size:14px;color:#E8C96A;
-                  font-style:italic;font-family:'Barlow',sans-serif;">
+                  padding:12px 18px;margin-top:24px;font-size:14px;color:#E8C96A;font-style:italic;">
         "Segurança elétrica não é custo — é investimento."
       </div>
     </div>
@@ -326,9 +304,7 @@ with col_dica_img:
     st.markdown(f"<div style='padding:40px 32px 40px 16px;'>{img_tag(IMG_DICAS, 'Dicas Elitee')}</div>",
                 unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  CTA                                                                     ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── CTA ──────────────────────────────────────────────────────────────────────
 st.markdown("""
 <div style="background:#0f0f0f;border-top:2px solid #C9A84C;border-bottom:2px solid #C9A84C;
             padding:56px 32px;text-align:center;margin-top:16px;">
@@ -338,7 +314,7 @@ st.markdown("""
   <h2 style="font-size:46px !important;color:#f5f5f2 !important;margin-bottom:8px !important;">
     Faça seu Orçamento <span style="color:#C9A84C;">Gratuito</span>
   </h2>
-  <p style="font-size:15px;color:#666;margin-bottom:32px;font-family:'Barlow',sans-serif;">
+  <p style="font-size:15px;color:#666;margin-bottom:32px;">
     Resposta rápida · Sem compromisso · Técnico especializado
   </p>
 </div>
@@ -351,27 +327,17 @@ with col_z2:
     <div style="margin-top:32px;">
       {img_tag(IMG_INFORMACOES, 'Informações de Contato', 'width:100%;border-radius:8px;')}
     </div>
-    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;
-                margin-top:16px;padding:0 0 40px;">
-      <div style="font-size:13px;color:#555;font-family:'Barlow',sans-serif;">
-        📍 <strong style="color:#888;">Todo o DF e Entorno</strong>
-      </div>
-      <div style="font-size:13px;color:#555;font-family:'Barlow',sans-serif;">
-        📧 <strong style="color:#888;">instalacoes.eliteedf@gmail.com</strong>
-      </div>
-      <div style="font-size:13px;color:#555;font-family:'Barlow',sans-serif;">
-        📱 <strong style="color:#888;">(61) 99247-3134</strong>
-      </div>
+    <div style="display:flex;justify-content:center;gap:32px;flex-wrap:wrap;margin-top:16px;padding:0 0 40px;">
+      <div style="font-size:13px;color:#555;">📍 <strong style="color:#888;">Todo o DF e Entorno</strong></div>
+      <div style="font-size:13px;color:#555;">📧 <strong style="color:#888;">instalacoes.eliteedf@gmail.com</strong></div>
+      <div style="font-size:13px;color:#555;">📱 <strong style="color:#888;">(61) 99247-3134</strong></div>
     </div>
     """, unsafe_allow_html=True)
 
-# ╔══════════════════════════════════════════════════════════════════════════╗
-# ║  RODAPÉ                                                                  ║
-# ╚══════════════════════════════════════════════════════════════════════════╝
+# ── RODAPÉ ───────────────────────────────────────────────────────────────────
 st.markdown(f"""
 <div style="background:#0a0a0a;border-top:1px solid #1a1a1a;padding:24px 32px;
-            display:flex;justify-content:space-between;align-items:center;
-            flex-wrap:wrap;gap:12px;margin-top:16px;">
+            display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
   <div style="display:flex;align-items:center;gap:12px;">
     <img src="data:image/jpeg;base64,{IMG_LOGO}" alt="Logo"
          style="height:50px;width:auto;border-radius:50%;"/>
@@ -379,12 +345,10 @@ st.markdown(f"""
       <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#C9A84C;letter-spacing:2px;">
         Instalações Elitee
       </div>
-      <div style="font-size:12px;color:#333;font-family:'Barlow',sans-serif;">
-        © 2026 · Todos os direitos reservados
-      </div>
+      <div style="font-size:12px;color:#333;">© 2026 · Todos os direitos reservados</div>
     </div>
   </div>
-  <div style="text-align:right;font-size:12px;color:#444;font-family:'Barlow',sans-serif;line-height:1.8;">
+  <div style="text-align:right;font-size:12px;color:#444;line-height:1.8;">
     Eletricista Responsável: Kleber<br>
     Atendimento: DF e Cidades do Entorno
   </div>
