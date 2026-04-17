@@ -409,22 +409,25 @@ h1, h2, h3, h4 {
 .norma-banner {
     background: linear-gradient(135deg, #111 0%, #1a1500 100%);
     border: 1px solid var(--border);
-    padding: 40px 60px;
+    padding: 36px 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+    flex-wrap: wrap;
+    gap: 24px;
     margin: 3px 0;
 }
 
 .norma-text h3 {
     font-family: 'Oswald', sans-serif;
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     color: var(--gold) !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 8px;
+    white-space: normal;
+    word-break: normal;
 }
 
 .norma-text p {
@@ -432,12 +435,12 @@ h1, h2, h3, h4 {
     color: #888;
     font-weight: 300;
     line-height: 1.6;
+    max-width: 500px;
 }
 
 .norma-badges {
     display: flex;
-    gap: 12px;
-    flex-shrink: 0;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
@@ -449,8 +452,25 @@ h1, h2, h3, h4 {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ===== MOBILE RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .topbar { padding: 10px 16px; font-size: 11px; flex-wrap: wrap; gap: 8px; }
+    .hero-content { padding: 40px 20px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .diff-grid { grid-template-columns: 1fr; gap: 3px; }
+    .service-grid { grid-template-columns: 1fr; }
+    .dica-wrapper { grid-template-columns: 1fr; }
+    .dica-img-side { min-height: 200px; }
+    .contato-section { grid-template-columns: 1fr; gap: 0; }
+    .norma-banner { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+    .norma-badges { width: 100%; }
+    .section { padding: 50px 20px; }
+    .footer { padding: 20px; flex-direction: column; text-align: center; }
 }
 
 /* ===== CONTATO ===== */
