@@ -1,15 +1,11 @@
 import streamlit as st
-import os
+import base64
+from img_data import IMG_LOGO, IMG_DESTAQUE, IMG_ELETRICA, IMG_HIDRAULICA, IMG_DICAS, IMG_INFORMACOES
 
-# Caminho base onde estão as imagens (mesma pasta do app.py)
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-
-def img(nome, **kwargs):
-    caminho = os.path.join(BASE_DIR, nome)
-    if os.path.exists(caminho):
-        st.image(caminho, **kwargs)
-        return True
-    return False
+def show_img(b64_string, **kwargs):
+    """Exibe imagem a partir de string base64"""
+    img_bytes = base64.b64decode(b64_string)
+    st.image(img_bytes, **kwargs)
 
 # Configuração Master da Página
 st.set_page_config(
@@ -65,15 +61,13 @@ st.markdown("""
 # --- CABEÇALHO / HERO ---
 col_logo, col_vazio = st.columns([1, 2])
 with col_logo:
-    if not img("logo.jpg", width=250):
-        st.subheader("⚡ INSTALAÇÕES ELITEE")
+    show_img(IMG_LOGO, width=250)
 
 st.markdown("<h1 style='text-align: center; font-size: 50px;'>SOLUÇÕES ELITE PARA SEU IMÓVEL</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 22px; color: #aaa;'>Referência em Engenharia Elétrica e Hidráulica no Distrito Federal e Entorno</p>", unsafe_allow_html=True)
 
 # Imagem de Destaque (Banner Principal)
-if not img("destaque.jpg", use_container_width=True):
-    st.divider()
+show_img(IMG_DESTAQUE, use_container_width=True)
 
 # --- DIFERENCIAIS ---
 st.write("")
@@ -93,8 +87,7 @@ col_elet, col_hidra = st.columns(2)
 
 with col_elet:
     st.subheader("⚡ Elétrica Predial e Residencial")
-    if not img("eletrica.jpg", caption="Quadros de Energia e Centros de Medição", use_container_width=True):
-        st.info("Imagem de Elétrica")
+    show_img(IMG_ELETRICA, caption="Quadros de Energia e Centros de Medição", use_container_width=True)
     st.write("""
     - Instalação de Quadros de Distribuição
     - Manutenção de Sistemas de Bombas
@@ -104,8 +97,7 @@ with col_elet:
 
 with col_hidra:
     st.subheader("💧 Hidráulica e Sistemas")
-    if not img("hidraulica.jpg", caption="Redes de Incêndio e Sistemas de Recalque", use_container_width=True):
-        st.info("Imagem de Hidráulica")
+    show_img(IMG_HIDRAULICA, caption="Redes de Incêndio e Sistemas de Recalque", use_container_width=True)
     st.write("""
     - Reparo de Vazamentos Estruturais
     - Manutenção Preventiva de Bombas
@@ -125,7 +117,7 @@ with col_d:
     *Não arrisque seu patrimônio com curiosos. Contrate quem entende do padrão DF.*
     """)
 with col_img_d:
-    img("dicas.jpg", use_container_width=True)
+    show_img(IMG_DICAS, use_container_width=True)
 
 # --- CONTATO E RODAPÉ ---
 st.divider()
@@ -138,8 +130,6 @@ with col_zap:
     st.write("📍 Atendemos todo o DF e Cidades do Entorno.")
 
 with col_contato:
-    if not img("informacoescontato.jpg", width=400):
-        st.write("📱 (61) 99247-3134")
-        st.write("📧 instalacoes.eliteedf@gmail.com")
+    show_img(IMG_INFORMACOES, width=400)
 
 st.markdown("<br><hr><center><p style='color: #666;'>© 2026 Instalações Elitee. Todos os direitos reservados. Eletricista Responsável: Kleber.</p></center>", unsafe_allow_html=True)
