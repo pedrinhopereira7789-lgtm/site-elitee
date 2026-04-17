@@ -1,6 +1,21 @@
 import streamlit as st
 # ── Configuração da página ──────────────────────────────────────────────────
 st.set_page_config(
+    import base64
+
+def load_img(path):
+    try:
+        with open(path, "rb") as f:
+            return base64.b64encode(f.read()).decode()
+    except:
+        return ""
+
+IMG_LOGO        = load_img("logo.jpg")
+IMG_DESTAQUE    = load_img("destaque.jpg")
+IMG_ELETRICA    = load_img("eletrica.jpg")
+IMG_HIDRAULICA  = load_img("hidraulica.jpg")
+IMG_DICAS       = load_img("dicas.jpg")
+IMG_INFORMACOES = load_img("informacoescontato.jpg")
     page_title="Instalações Elitee | Elétrica & Hidráulica",
     page_icon="⚡",
     layout="wide",
