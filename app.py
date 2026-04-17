@@ -1,4 +1,15 @@
 import streamlit as st
+import os
+
+# Caminho base onde estão as imagens (mesma pasta do app.py)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def img(nome, **kwargs):
+    caminho = os.path.join(BASE_DIR, nome)
+    if os.path.exists(caminho):
+        st.image(caminho, **kwargs)
+        return True
+    return False
 
 # Configuração Master da Página
 st.set_page_config(
@@ -54,18 +65,14 @@ st.markdown("""
 # --- CABEÇALHO / HERO ---
 col_logo, col_vazio = st.columns([1, 2])
 with col_logo:
-    try:
-        st.image("logo.jpg", width=250)
-    except:
+    if not img("logo.jpg", width=250):
         st.subheader("⚡ INSTALAÇÕES ELITEE")
 
 st.markdown("<h1 style='text-align: center; font-size: 50px;'>SOLUÇÕES ELITE PARA SEU IMÓVEL</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 22px; color: #aaa;'>Referência em Engenharia Elétrica e Hidráulica no Distrito Federal e Entorno</p>", unsafe_allow_html=True)
 
 # Imagem de Destaque (Banner Principal)
-try:
-    st.image("destaque.jpg", use_container_width=True)
-except:
+if not img("destaque.jpg", use_container_width=True):
     st.divider()
 
 # --- DIFERENCIAIS ---
@@ -86,9 +93,7 @@ col_elet, col_hidra = st.columns(2)
 
 with col_elet:
     st.subheader("⚡ Elétrica Predial e Residencial")
-    try:
-        st.image("eletrica.jpg", caption="Quadros de Energia e Centros de Medição", use_container_width=True)
-    except:
+    if not img("eletrica.jpg", caption="Quadros de Energia e Centros de Medição", use_container_width=True):
         st.info("Imagem de Elétrica")
     st.write("""
     - Instalação de Quadros de Distribuição
@@ -99,9 +104,7 @@ with col_elet:
 
 with col_hidra:
     st.subheader("💧 Hidráulica e Sistemas")
-    try:
-        st.image("hidraulica.jpg", caption="Redes de Incêndio e Sistemas de Recalque", use_container_width=True)
-    except:
+    if not img("hidraulica.jpg", caption="Redes de Incêndio e Sistemas de Recalque", use_container_width=True):
         st.info("Imagem de Hidráulica")
     st.write("""
     - Reparo de Vazamentos Estruturais
@@ -122,10 +125,7 @@ with col_d:
     *Não arrisque seu patrimônio com curiosos. Contrate quem entende do padrão DF.*
     """)
 with col_img_d:
-    try:
-        st.image("dicas.jpg", use_container_width=True)
-    except:
-        pass
+    img("dicas.jpg", use_container_width=True)
 
 # --- CONTATO E RODAPÉ ---
 st.divider()
@@ -138,9 +138,7 @@ with col_zap:
     st.write("📍 Atendemos todo o DF e Cidades do Entorno.")
 
 with col_contato:
-    try:
-        st.image("informacoescontato.jpg", width=400)
-    except:
+    if not img("informacoescontato.jpg", width=400):
         st.write("📱 (61) 99247-3134")
         st.write("📧 instalacoes.eliteedf@gmail.com")
 
