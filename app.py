@@ -13,17 +13,26 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
+WHATSAPP_ICON = """<svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;vertical-align:middle;display:inline-block;">
+  <path fill="white" d="M22.5 9.5C21 8 19 7 16.8 7C12.3 7 8.6 10.7 8.6 15.2C8.6 16.7 9 18.1 9.7 19.3L8.5 24L13.3 22.8C14.5 23.4 15.6 23.8 16.8 23.8C21.3 23.8 25 20.1 25 15.6C25 13.4 24 11.1 22.5 9.5ZM16.8 22.3C15.7 22.3 14.6 22 13.6 21.4L13.3 21.2L10.6 21.9L11.3 19.3L11.1 19C10.4 17.9 10 16.6 10 15.2C10 11.5 13.1 8.5 16.8 8.5C18.6 8.5 20.2 9.2 21.5 10.4C22.8 11.7 23.5 13.3 23.5 15.2C23.5 18.9 20.5 22.3 16.8 22.3ZM20.5 17C20.3 16.9 19.2 16.4 19 16.3C18.8 16.2 18.6 16.2 18.5 16.4C18.3 16.6 17.9 17.1 17.8 17.3C17.7 17.5 17.5 17.5 17.3 17.4C16.3 17 15.5 16.5 14.8 15.8C14.2 15.2 13.7 14.5 13.4 13.7C13.3 13.5 13.4 13.3 13.5 13.2C13.6 13.1 13.8 12.9 13.9 12.8C14 12.7 14.1 12.5 14.1 12.4C14.2 12.3 14.1 12.1 14.1 12C14 11.9 13.6 10.8 13.4 10.4C13.3 10 13.1 10.1 13 10.1H12.6C12.4 10.1 12.1 10.2 11.9 10.4C11.7 10.6 11.2 11.1 11.2 12.2C11.2 13.3 11.9 14.3 12 14.5C12.1 14.7 13.6 17.1 15.9 18.1C16.4 18.3 16.8 18.5 17.1 18.6C17.6 18.8 18.1 18.8 18.4 18.7C18.8 18.6 19.6 18.2 19.8 17.7C20 17.2 20 16.8 19.9 16.7L20.5 17Z"/>
+</svg>"""
+
+INSTAGRAM_ICON = """<svg width="20" height="20" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;vertical-align:middle;display:inline-block;">
+  <rect x="7" y="7" width="18" height="18" rx="5" stroke="white" stroke-width="2" fill="none"/>
+  <circle cx="16" cy="16" r="5" stroke="white" stroke-width="2" fill="none"/>
+  <circle cx="22" cy="10" r="1.4" fill="white"/>
+</svg>"""
+
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Raleway:wght@300;400;600;700&display=swap');
 
-/* ===== RESET & BASE ===== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body, .main, .block-container {
     background-color: #0a0a0a !important;
     color: #e8e8e8 !important;
-    font-family: 'Lato', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .block-container {
@@ -31,12 +40,10 @@ html, body, .main, .block-container {
     max-width: 100% !important;
 }
 
-/* Esconde elementos desnecessários do Streamlit */
 #MainMenu, footer, header { visibility: hidden; }
 .stDeployButton { display: none; }
 [data-testid="stToolbar"] { display: none; }
 
-/* ===== VARIÁVEIS DE COR ===== */
 :root {
     --gold: #C9A84C;
     --gold-light: #E8D08A;
@@ -49,9 +56,8 @@ html, body, .main, .block-container {
     --muted: #888888;
 }
 
-/* ===== TIPOGRAFIA ===== */
 h1, h2, h3, h4 {
-    font-family: 'Oswald', sans-serif !important;
+    font-family: 'Cormorant Garamond', serif !important;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
@@ -67,19 +73,66 @@ h1, h2, h3, h4 {
     font-size: 13px;
     color: var(--gold);
     letter-spacing: 1px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
-.topbar span { margin-right: 20px; }
-.topbar a {
-    color: var(--gold);
-    text-decoration: none;
-    font-weight: 700;
-    padding: 6px 18px;
-    border: 1px solid var(--gold);
-    border-radius: 3px;
-    transition: all 0.2s;
+.topbar-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
 }
-.topbar a:hover { background: var(--gold); color: #000; }
+
+.topbar-info span {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+}
+
+.topbar-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.topbar-btn-wa {
+    color: #fff !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 7px 16px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    background: #25D366;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.topbar-btn-wa:hover { filter: brightness(1.1); color: #fff !important; }
+
+.topbar-btn-ig {
+    color: #fff !important;
+    font-family: 'Raleway', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 7px 16px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.topbar-btn-ig:hover { filter: brightness(1.1); color: #fff !important; }
 
 /* ===== HERO ===== */
 .hero-wrapper {
@@ -114,7 +167,7 @@ h1, h2, h3, h4 {
     display: inline-block;
     background: var(--gold);
     color: #000;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -124,19 +177,20 @@ h1, h2, h3, h4 {
 }
 
 .hero-title {
-    font-family: 'Oswald', sans-serif !important;
-    font-size: clamp(36px, 5vw, 64px) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: clamp(40px, 5vw, 70px) !important;
     font-weight: 700 !important;
     line-height: 1.05 !important;
     color: #fff !important;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     margin-bottom: 16px !important;
 }
 
 .hero-title span { color: var(--gold); }
 
 .hero-subtitle {
+    font-family: 'Raleway', sans-serif;
     font-size: 17px;
     color: #bbb;
     line-height: 1.7;
@@ -151,8 +205,8 @@ h1, h2, h3, h4 {
     gap: 10px;
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
     color: #000 !important;
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 15px;
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -178,22 +232,26 @@ h1, h2, h3, h4 {
 }
 
 .stat-item { text-align: left; }
+
 .stat-num {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
 }
+
 .stat-label {
+    font-family: 'Raleway', sans-serif;
     font-size: 11px;
     color: #777;
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-top: 4px;
+    font-weight: 400;
 }
 
-/* ===== SECTION WRAPPER ===== */
+/* ===== SECTIONS ===== */
 .section {
     padding: 80px 60px;
     background: var(--black);
@@ -202,22 +260,23 @@ h1, h2, h3, h4 {
 .section.alt { background: #0e0e0e; }
 
 .section-tag {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 11px;
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
     margin-bottom: 10px;
     display: block;
+    font-weight: 600;
 }
 
 .section-title {
-    font-family: 'Oswald', sans-serif !important;
-    font-size: clamp(28px, 3.5vw, 42px) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: clamp(32px, 3.5vw, 48px) !important;
     font-weight: 700 !important;
     color: #fff !important;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
     line-height: 1.1 !important;
     margin-bottom: 16px !important;
 }
@@ -225,6 +284,7 @@ h1, h2, h3, h4 {
 .section-title span { color: var(--gold); }
 
 .section-desc {
+    font-family: 'Raleway', sans-serif;
     font-size: 15px;
     color: var(--muted);
     line-height: 1.8;
@@ -233,12 +293,11 @@ h1, h2, h3, h4 {
     margin-bottom: 50px;
 }
 
-/* ===== CARDS DIFERENCIAIS ===== */
+/* ===== DIFERENCIAIS ===== */
 .diff-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2px;
-    margin-top: 0;
 }
 
 .diff-card {
@@ -257,8 +316,8 @@ h1, h2, h3, h4 {
 }
 
 .diff-num {
-    font-family: 'Oswald', sans-serif;
-    font-size: 42px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
     font-weight: 700;
     color: var(--gold);
     line-height: 1;
@@ -266,16 +325,17 @@ h1, h2, h3, h4 {
 }
 
 .diff-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
     color: #fff;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
     margin-bottom: 10px;
 }
 
 .diff-text {
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     color: var(--muted);
     line-height: 1.7;
@@ -283,12 +343,6 @@ h1, h2, h3, h4 {
 }
 
 /* ===== SERVIÇOS ===== */
-.service-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-}
-
 .service-panel {
     background: var(--card);
     padding: 0;
@@ -309,9 +363,7 @@ h1, h2, h3, h4 {
     transition: transform 0.4s;
 }
 
-.service-panel:hover .service-img-wrapper img {
-    transform: scale(1.04);
-}
+.service-panel:hover .service-img-wrapper img { transform: scale(1.04); }
 
 .service-body { padding: 36px; }
 
@@ -319,7 +371,7 @@ h1, h2, h3, h4 {
     display: inline-block;
     background: var(--gold);
     color: #000;
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -329,8 +381,8 @@ h1, h2, h3, h4 {
 }
 
 .service-title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
     font-weight: 700;
     color: #fff;
     text-transform: uppercase;
@@ -346,6 +398,7 @@ h1, h2, h3, h4 {
 }
 
 .service-list li {
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     color: #aaa;
     padding: 9px 0;
@@ -366,24 +419,18 @@ h1, h2, h3, h4 {
 }
 
 /* ===== DICA ===== */
-.dica-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3px;
-    align-items: stretch;
-}
-
 .dica-text-side {
     background: var(--gold);
     padding: 60px 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
 }
 
 .dica-text-side h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
     font-weight: 700;
     color: #000 !important;
     text-transform: uppercase;
@@ -392,13 +439,14 @@ h1, h2, h3, h4 {
 }
 
 .dica-text-side p {
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
     color: #1a1a1a;
     line-height: 1.8;
     font-weight: 400;
 }
 
-.dica-text-side strong { color: #000; }
+.dica-text-side strong { color: #000; font-weight: 700; }
 
 .dica-img-side {
     overflow: hidden;
@@ -419,18 +467,17 @@ h1, h2, h3, h4 {
 }
 
 .norma-text h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
     font-weight: 700;
     color: var(--gold) !important;
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 8px;
-    white-space: normal;
-    word-break: normal;
 }
 
 .norma-text p {
+    font-family: 'Raleway', sans-serif;
     font-size: 14px;
     color: #888;
     font-weight: 300;
@@ -448,112 +495,13 @@ h1, h2, h3, h4 {
     background: rgba(201,168,76,0.1);
     border: 1px solid var(--gold);
     color: var(--gold);
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
     padding: 10px 18px;
     text-transform: uppercase;
     white-space: nowrap;
-}
-
-/* ===== MOBILE RESPONSIVO ===== */
-@media (max-width: 768px) {
-    .topbar { padding: 10px 16px; font-size: 11px; flex-wrap: wrap; gap: 8px; }
-    .hero-content { padding: 40px 20px; }
-    .hero-stats { gap: 20px; flex-wrap: wrap; }
-    .diff-grid { grid-template-columns: 1fr; gap: 3px; }
-    .service-grid { grid-template-columns: 1fr; }
-    .dica-wrapper { grid-template-columns: 1fr; }
-    .dica-img-side { min-height: 200px; }
-    .contato-section { grid-template-columns: 1fr; gap: 0; }
-    .norma-banner { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
-    .norma-badges { width: 100%; }
-    .section { padding: 50px 20px; }
-    .footer { padding: 20px; flex-direction: column; text-align: center; }
-}
-
-/* ===== CONTATO ===== */
-.contato-section {
-    background: #000;
-    padding: 80px 60px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    border-top: 3px solid var(--gold);
-}
-
-.contato-left h2 {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(28px, 3.5vw, 44px);
-    font-weight: 700;
-    color: #fff !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    line-height: 1.1;
-    margin-bottom: 16px;
-}
-
-.contato-left h2 span { color: var(--gold); }
-
-.contato-left p {
-    font-size: 15px;
-    color: #888;
-    line-height: 1.8;
-    font-weight: 300;
-    margin-bottom: 32px;
-}
-
-.contato-info {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-bottom: 32px;
-}
-
-.contato-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    font-size: 14px;
-    color: #bbb;
-}
-
-.contato-item-icon {
-    width: 38px;
-    height: 38px;
-    background: rgba(201,168,76,0.1);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
-    flex-shrink: 0;
-}
-
-.btn-whatsapp {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #25D366;
-    color: #fff !important;
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 18px 36px;
-    border-radius: 3px;
-    text-decoration: none !important;
-    transition: all 0.25s;
-    box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-}
-
-.btn-whatsapp:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(37,211,102,0.45);
-    color: #fff !important;
 }
 
 /* ===== RODAPÉ ===== */
@@ -569,24 +517,42 @@ h1, h2, h3, h4 {
 }
 
 .footer-copy {
+    font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: #444;
     letter-spacing: 1px;
 }
 
 .footer-right {
+    font-family: 'Raleway', sans-serif;
     font-size: 12px;
     color: #333;
     letter-spacing: 1px;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+    .topbar { padding: 10px 16px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .topbar-buttons { width: 100%; }
+    .topbar-btn-wa, .topbar-btn-ig { flex: 1; justify-content: center; font-size: 11px; padding: 8px 10px; }
+    .hero-content { padding: 40px 20px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .diff-grid { grid-template-columns: 1fr; gap: 3px; }
+    .dica-text-side { padding: 40px 24px; }
+    .dica-img-side { min-height: 200px; }
+    .norma-banner { padding: 28px 20px; flex-direction: column; align-items: flex-start; }
+    .norma-badges { width: 100%; }
+    .section { padding: 50px 20px; }
+    .footer { padding: 20px; flex-direction: column; text-align: center; }
 }
 
 /* ===== STREAMLIT OVERRIDES ===== */
 .stButton > button {
     background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%) !important;
     color: #000 !important;
-    font-family: 'Oswald', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
     border: none !important;
@@ -600,9 +566,9 @@ h1, h2, h3, h4 {
 .stLinkButton > a {
     background: #25D366 !important;
     color: #fff !important;
-    font-family: 'Oswald', sans-serif !important;
+    font-family: 'Raleway', sans-serif !important;
     font-weight: 700 !important;
-    font-size: 16px !important;
+    font-size: 15px !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
     border: none !important;
@@ -619,8 +585,6 @@ h1, h2, h3, h4 {
 [data-testid="stVerticalBlock"] { gap: 0 !important; }
 .st-emotion-cache-z5fcl4 { padding: 0 !important; }
 div[data-testid="column"] { padding: 0 !important; }
-
-/* Remove espaços entre seções */
 .element-container { margin-bottom: 0 !important; }
 </style>
 """, unsafe_allow_html=True)
@@ -629,14 +593,21 @@ div[data-testid="column"] { padding: 0 !important; }
 # ==============================
 # TOPBAR
 # ==============================
-st.markdown("""
+st.markdown(f"""
 <div class="topbar">
-    <div>
+    <div class="topbar-info">
         <span>📍 Atendemos todo o DF e Entorno</span>
         <span>⚡ Elétrica &nbsp;|&nbsp; 💧 Hidráulica</span>
         <span>🏗️ NBR-5410 Certificado</span>
     </div>
-    <a href="https://wa.me/5561992473134" target="_blank">📲 ORÇAMENTO GRÁTIS</a>
+    <div class="topbar-buttons">
+        <a class="topbar-btn-wa" href="https://wa.me/5561992473134" target="_blank">
+            {WHATSAPP_ICON} ORÇAMENTO GRÁTIS
+        </a>
+        <a class="topbar-btn-ig" href="https://www.instagram.com/instalacoes_elitee?igsh=MTRtbjF3NWh5cmk2aw==" target="_blank">
+            {INSTAGRAM_ICON} INSTAGRAM
+        </a>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -646,7 +617,6 @@ st.markdown("""
 # ==============================
 hero_col, _ = st.columns([1, 0.001])
 with hero_col:
-    # Renderiza a imagem de fundo como base64 inline no CSS
     img_bytes_destaque = base64.b64decode(IMG_DESTAQUE)
     b64_bg = base64.b64encode(img_bytes_destaque).decode()
 
@@ -658,7 +628,7 @@ with hero_col:
             <h1 class="hero-title">
                 INSTALAÇÕES<br>
                 <span>ELITEE</span><br>
-                ELÉTRICA & HIDRÁULICA
+                ELÉTRICA &amp; HIDRÁULICA
             </h1>
             <p class="hero-subtitle">
                 Referência técnica em serviços elétricos e hidráulicos para 
@@ -728,7 +698,7 @@ st.markdown("""
         <div class="diff-card">
             <span class="diff-icon">🛡️</span>
             <div class="diff-num">100%</div>
-            <div class="diff-title">Segurança & Normas</div>
+            <div class="diff-title">Segurança &amp; Normas</div>
             <p class="diff-text">Rigorosamente dentro das normas NBR-5410, NR-10 e padrões técnicos da CEB e CAESB.</p>
         </div>
         <div class="diff-card">
@@ -838,26 +808,30 @@ col_ctxt, col_cimg = st.columns(2)
 
 with col_ctxt:
     st.markdown("""
-    <div class="contato-section" style="display:block; padding: 80px 50px;">
-        <h2 style="font-family:'Oswald',sans-serif; font-size:clamp(28px,3.5vw,42px); font-weight:700; color:#fff !important; text-transform:uppercase; letter-spacing:1px; line-height:1.1; margin-bottom:16px;">
+    <div style="background:#000; padding: 80px 50px; border-top: 3px solid #C9A84C;">
+        <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,3.5vw,48px); font-weight:700; color:#fff !important; text-transform:uppercase; letter-spacing:2px; line-height:1.1; margin-bottom:16px;">
             SOLICITE SEU<br><span style="color:#C9A84C;">ORÇAMENTO GRÁTIS</span>
         </h2>
-        <p style="font-size:15px; color:#888; line-height:1.8; font-weight:300; margin-bottom:28px;">
+        <p style="font-family:'Raleway',sans-serif; font-size:15px; color:#888; line-height:1.8; font-weight:300; margin-bottom:28px;">
             Atendimento rápido e personalizado. Resposta em menos de 1 hora 
             via WhatsApp nos dias úteis.
         </p>
         <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:32px;">
-            <div style="display:flex; align-items:center; gap:14px; font-size:14px; color:#bbb;">
+            <div style="display:flex; align-items:center; gap:14px; font-family:'Raleway',sans-serif; font-size:14px; color:#bbb;">
                 <div style="width:38px; height:38px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">📞</div>
                 <span>(61) 99247-3134 — Kleber</span>
             </div>
-            <div style="display:flex; align-items:center; gap:14px; font-size:14px; color:#bbb;">
+            <div style="display:flex; align-items:center; gap:14px; font-family:'Raleway',sans-serif; font-size:14px; color:#bbb;">
                 <div style="width:38px; height:38px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">📍</div>
                 <span>DF e Cidades do Entorno</span>
             </div>
-            <div style="display:flex; align-items:center; gap:14px; font-size:14px; color:#bbb;">
+            <div style="display:flex; align-items:center; gap:14px; font-family:'Raleway',sans-serif; font-size:14px; color:#bbb;">
                 <div style="width:38px; height:38px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">🕐</div>
                 <span>Seg a Sáb — 07h às 19h</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:14px; font-family:'Raleway',sans-serif; font-size:14px; color:#bbb;">
+                <div style="width:38px; height:38px; background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.25); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;">📸</div>
+                <a href="https://www.instagram.com/instalacoes_elitee?igsh=MTRtbjF3NWh5cmk2aw==" target="_blank" style="color:#C9A84C; text-decoration:none; font-family:'Raleway',sans-serif; font-weight:600;">@instalacoes_elitee</a>
             </div>
         </div>
     </div>
@@ -871,7 +845,7 @@ with col_cimg:
 
 
 # ==============================
-# LOGO + RODAPÉ
+# RODAPÉ
 # ==============================
 st.markdown("""
 <div class="footer">
